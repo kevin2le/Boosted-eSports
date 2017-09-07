@@ -23,11 +23,13 @@ class CreateEventPage extends Component {
         e.preventDefault();
         console.log(this.state)
         eventAPI.create(this.state)
-
-
+        .then(() => {
+            this.props.history.push('/events');
+        });
+        
     }
     isFormInvalid() {
-    return !(this.state.name && this.state.location && this.state.date);
+    return !(this.state.title && this.state.location && this.state.date);
   }
     render() {
         return (
@@ -50,7 +52,7 @@ class CreateEventPage extends Component {
                         <input type="text" placeholder="games" value={this.state.games} onChange={(e) => this.handleChange('game', e)}/>
                     </div>
                     <div>
-                        <button className="btn btn-default" disabled={this.isFormInvalid()}>Post Event!</button>
+                        <button className="btn btn-default" disabled={this.isFormInvalid()} onClick={this.handleSubmit}>Post Event!</button>
                         <button className="btn btn-default"><Link to='/'>Back Home</Link></button>
                     </div>
                 </form>

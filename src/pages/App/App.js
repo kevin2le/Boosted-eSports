@@ -26,7 +26,8 @@ class App extends Component {
     this.state = {
       user: null,
       games: [],
-      searchResults: []
+      searchResults: [],
+      events:[]
     };
   }
 
@@ -53,8 +54,10 @@ class App extends Component {
     console.log("component is mounted")
     fetch('api/games', { headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken() }) })
       .then(res => res.json())
-      .then(data => this.setState({games: data}))
-  
+      .then(data => this.setState({games: data}));
+    fetch('api/events', { headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken() }) })
+      .then(res => res.json())
+      .then(datafile => this.setState({events: datafile}));  
   }
 
   render() {
@@ -97,9 +100,9 @@ class App extends Component {
               <Route exact path='/events' render={() =>
                   <EventList events={this.state.events} />
               }/>
-              <Route exact path='/events/new' render={() =>
+              <Route exact path='/events/new' render={(props) =>
                   <NewEvent
-                      {...this.props}
+                      history={props.history}
                       events={this.state.events}
                   />
               }/>

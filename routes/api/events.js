@@ -4,6 +4,6 @@ var Event = require('../../models/event');
 var eventsCtrl = require('../../controllers/events');
 
 router.get('/', eventsCtrl.index);
-router.post('/new', eventsCtrl.create);
+router.post('/', eventsCtrl.create);
 
 module.exports= router;

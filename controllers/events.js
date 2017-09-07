@@ -11,13 +11,15 @@ function index(req, res) {
 function create(req, res) {
     var newEvent = new Event(req.body);
     newEvent.user = req.user.id;
-    newEvent.save((err, list) => {
-        req.user.events.push(event.id);
-        req.user.save(() => {
-            res.redirect('/events/' + req.user.id);
-        });
+    newEvent.save((err, event) => {
+        // User.findById(req.user._id, (err, user) => {
+        //     user.events.push(event._id);
+        //     user.save(() => res.status(201).json())    ;   
+        // });
+        res.json(event);
     });
-}
+};
+
 
 module.exports = {
     index,

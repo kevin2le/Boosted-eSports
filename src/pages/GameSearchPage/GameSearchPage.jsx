@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const GameSearchPage = (props) => {
     let search = props.search.map((game, idx) =>{

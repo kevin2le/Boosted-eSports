@@ -24,11 +24,19 @@ function create(body) {
     })
     .then(res => {
         if (res.ok) return res.json();
-        throw new('Entry Failed');
+        throw new Error('Entry Failed');
+    })
+};
+
+function deleteEvent(id) {
+    fetch(BASE_URL + id, {
+        method: "DELETE",
+        headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken()})
     })
 };
 
 export default {
     index,
-    create
-}
+    create,
+    delete: deleteEvent
+};

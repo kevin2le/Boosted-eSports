@@ -20,8 +20,20 @@ function create(req, res) {
     });
 };
 
+function deleteEvent(req, res) {
+    User.findById(req.user._id, (err, user) => {
+        user.events.remove(req.params.id);
+        user.save(() => {
+            Event.findById(req.params.id, (err, event) => {
+                event.remove();
+                res.status(200);
+            })
+        })
+    })
+}
 
 module.exports = {
     index,
-    create
+    create,
+    delete: deleteEvent
 }

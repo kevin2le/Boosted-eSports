@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {
-    Link,
-    Route,
-    Switch
+    Link
 } from 'react-router-dom';
-import NavBar from '../../../components/NavBar/NavBar';
 import EventList from '../../../components/EventList/EventList'
 import eventAPI from '../../../utils/eventAPI';
-import NewEvent from '../NewEvent/NewEvent';
 
 class EventPage extends Component {
     constructor() {
@@ -21,14 +17,14 @@ class EventPage extends Component {
             this.setState({events})
         );
     }
-    render() {
+    render(props) {
         return (
             <div>
                 <h3>Events</h3>
                 <Link to='/events/new'>Create an Event</Link>
                 &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <Link to='/'>Back</Link>
-                <EventList  />
+                <EventList events={this.state.events} />
             </div>
         )
     }

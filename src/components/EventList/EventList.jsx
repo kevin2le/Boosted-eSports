@@ -1,15 +1,16 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const EventList = (props) => {
     return (
         <div>>
             <table>
                 <tbody>
-                    {props.events.map(event =>
-                        <tr key={event.title}>
-                            <td>{event.title}</td>
-                            <td>{event.date}</td>
-                            <td>{event.event}</td>
+                    {props.events.map(eventsite =>
+                        <tr key={eventsite._id}>
+                            <td><Link to={'/events/' + eventsite._id}>{eventsite.title}</Link></td>
+                            <td>{eventsite.date}</td>
+                            <td>{eventsite.event}</td>
                         </tr>
                     )}
                 </tbody>

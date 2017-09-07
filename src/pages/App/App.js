@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
   Redirect,
-  Link
 } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -12,13 +11,12 @@ import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../utils/userService';
 import EventPage from '../Events/EventPage/EventPage';
 import NewEvent from '../Events/NewEvent/NewEvent';
+import EventShowPage from '../Events/EventShowPage/EventShowPage'
 import NavBar from '../../components/NavBar/NavBar';
-import CreateEventPage from '../../components/CreateEventPage/CreateEventPage';
 import tokenService from '../../utils/tokenService';
 import GameData from '../GameData/GameData';
 import GameSearchPage from '../GameSearchPage/GameSearchPage';
 import EventList from '../../components/EventList/EventList'
-import eventAPI from '../../utils/eventAPI';
 
 class App extends Component {
   constructor() {
@@ -85,7 +83,10 @@ class App extends Component {
               }/>
               <Route exact path='/events' render={(props) => (
                 userService.getUser() ?
-                <EventPage {...props} />
+                <EventPage 
+                  {...props} 
+                  events={this.state.events}
+                />
                   :
                   <Redirect to='/login' />
               )}/>
@@ -97,15 +98,27 @@ class App extends Component {
                 <GameSearchPage search={this.state.searchResults}
                 />
               }/>
-              <Route exact path='/events' render={() =>
-                  <EventList events={this.state.events} />
+              <Route exact path='/events' render={(props) =>
+                <EventList events={this.state.events} />
               }/>
               <Route exact path='/events/new' render={(props) =>
-                  <NewEvent
+                <NewEvent
                       history={props.history}
                       events={this.state.events}
                   />
               }/>
+              <Route exact path='/events/:id' render={(props) => {
+                var event = this.state.events.find((eve) => {
+                  console.log(eve);
+                  return eve._id === props.match.params.id
+                });
+                return(
+                <EventShowPage
+                      {...this.props}
+                      event = {event}
+                />)
+              }
+              } />
             </Switch>
           </div>
         </Router>

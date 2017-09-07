@@ -16,6 +16,9 @@
     "react-scripts": "1.0.12",
     "serve-favicon": "^2.4.3"
   },
+  "devDependencies":{
+    "react-scripts": "0.9.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

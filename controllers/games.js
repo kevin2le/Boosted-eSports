@@ -28,8 +28,7 @@ function search(req, res) {
     };
     request(options, function(err, response, body) {
         var gameSearch = JSON.parse(body);
-        gameSearch = gameSearch.results;
-        res.json({response});
+            res.send(gameSearch)
     });
 }
 

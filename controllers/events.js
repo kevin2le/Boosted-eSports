@@ -4,6 +4,10 @@ var Game = require('../models/game');
 var request = ('request');
 const rootURL = 'https://api-2445582011268.apicast.io/'
 
+function index(req, res) {
+    Event.find({}).then(events => res.json(events));
+}
+
 function create(req, res) {
     var newEvent = new Event(req.body);
     newEvent.user = req.user.id;
@@ -16,5 +20,6 @@ function create(req, res) {
 }
 
 module.exports = {
+    index,
     create
 }

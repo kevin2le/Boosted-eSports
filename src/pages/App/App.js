@@ -10,11 +10,15 @@ import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../utils/userService';
-import EventPage from '../EventPage/EventPage';
+import EventPage from '../Events/EventPage/EventPage';
+import NewEvent from '../Events/NewEvent/NewEvent';
 import NavBar from '../../components/NavBar/NavBar';
-import CreateEventPage from '../CreateEventPage/CreateEventPage';
+import CreateEventPage from '../../components/CreateEventPage/CreateEventPage';
 import tokenService from '../../utils/tokenService';
 import GameData from '../GameData/GameData';
+import GameSearchPage from '../GameSearchPage/GameSearchPage';
+import EventList from '../../components/EventList/EventList'
+import eventAPI from '../../utils/eventAPI';
 
 class App extends Component {
   constructor() {
@@ -40,7 +44,6 @@ class App extends Component {
   }
 
   handleSearch = (results) => {
-    console.log(results);
     this.setState({searchResults: results});
   }
 
@@ -77,11 +80,28 @@ class App extends Component {
                   handleLogin={this.handleLogin}
                 />
               }/>
-              <Route exact path='/events' component={EventPage} />
-              <Route exact path='/create-event' component={CreateEventPage} />
+              <Route exact path='/events' render={(props) => (
+                userService.getUser() ?
+                <EventPage {...props} />
+                  :
+                  <Redirect to='/login' />
+              )}/>
               <Route exact path='/games' render={(props) =>
                 <GameData games={this.state.games}
                 />
+              }/>
+              <Route exact path='games/search' render={(props) =>
+                <GameSearchPage search={this.state.searchResults}
+                />
+              }/>
+              <Route exact path='/events' render={() =>
+                  <EventList events={this.state.events} />
+              }/>
+              <Route exact path='/events/new' render={() =>
+                  <NewEvent
+                      {...this.props}
+                      events={this.state.events}
+                  />
               }/>
             </Switch>
           </div>

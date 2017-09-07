@@ -18,8 +18,12 @@ class NavBar extends Component {
 
   onClick = () => {
     fetch(`api/games/search?search=${this.state.search}`, { headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken() }) })
-      .then(res => res.json())
-      .then(results => this.props.handleSearch(results))
+      .then(res => {
+        console.log(res);
+        return res.json()})
+      .then(results =>{
+        console.log(results);
+       return this.props.handleSearch(results)})
   }
 
 
@@ -44,13 +48,16 @@ class NavBar extends Component {
           <div className="nav-wrapper">
             <header className="brand-logo left"> Boosted Esports </header>
             <div className="blue-text text-darken-2">
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <Link to="/events" className="blue-text text-darken-2">Events</Link>
-                <Link to="/games" className="blue-text text-darken-2" > Games</Link>
-                <div>
-                  <input type="text" value={this.state.search} onChange={this.changeSearch} />
-                  <button className="blue-text text-darken-2" onClick={this.onClick}><Link to="/search"> Search</Link> </button>
-                </div>
+              <ul id="nav-mobile" className="right">
+                <li><Link to="/events" className="blue-text text-darken-2">Events</Link></li>
+                <li><Link to="/games" className="blue-text text-darken-2" > Games</Link></li>
+                <li>
+                  <div>
+                    <input type="text" value={this.state.search} onChange={this.changeSearch} />
+                    <button className="blue-text text-darken-2" onClick={this.onClick}><Link to="/search"> Search</Link> </button>
+                  </div>
+                </li>
+
                 {nav}
               </ul>
             </div>

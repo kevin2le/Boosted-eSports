@@ -7,7 +7,7 @@ var eventSchema = new mongoose.Schema({
     date: String,
     type: [String],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
-    game: [{type: Schema.Types.ObjectId, ref: 'Game'}]
+    game: [String]
 })
 
 module.exports = mongoose.model('Event', eventSchema);

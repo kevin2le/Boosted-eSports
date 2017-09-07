@@ -28,7 +28,7 @@ class EventPage extends Component {
                 <Link to='/events/new'>Create an Event</Link>
                 &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <Link to='/'>Back</Link>
-                <EventList />
+                <EventList  />
             </div>
         )
     }

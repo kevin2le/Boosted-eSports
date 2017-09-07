@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use(require('./config/auth'));
 app.use('/api/users', require('./routes/api/users'));
-
+app.use('/api/events', require('./routes/api/events'));
+app.use('/api/games', require('./routes/api/games'));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

@@ -3,6 +3,7 @@ var router = express.Router();
 var Game = require('../../models/game');
 var gamesCtrl = require('../../controllers/games');
 
-router.post('/games', gamesCtrl.index);
+router.get('/', gamesCtrl.index);
+router.get('/search', gamesCtrl.search);
 
 module.exports = router;

@@ -15,27 +15,27 @@ class CreateEventPage extends Component {
     }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.location && this.state.date === this.state.event === this.state);
   }
     render() {
         return (
             <div>
-                <header>Create an Event</header>
+                <h2>Create an Event</h2>
                 <form>
                     <div>
                         <input type="text" placeholder="Event Title" value={this.state.name} />
                     </div>
                     <div>
-                        <input type="location" placeholder="location" value={this.state.location} />
+                        <input type="text" placeholder="location" value={this.state.location} />
                     </div>
                     <div>
-                        <input type="date" placeholder="date" value={this.state.location} />
+                        <input type="date" placeholder="date" value={this.state.date} />
                     </div>
                     <div>
-                        <input type="event" placeholder="event type" value={this.state.event} />
+                        <input type="text" placeholder="event type" value={this.state.event} />
                     </div>
                     <div>
-                        <input type="game" placeholder="games" value={this.state.games} />
+                        <input type="text" placeholder="games" value={this.state.games} />
                     </div>
                     <div>
                         <button className="btn btn-default" disabled={this.isFormInvalid()}>Post Event!</button>

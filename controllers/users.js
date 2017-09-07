@@ -5,7 +5,6 @@ var SECRET = process.env.SECRET;
 function signup(req, res) {
   var user = new User(req.body);
   user.save()
-  console.log(user.save())
     .then(user => {
       res.json({token: createJWT(user)});
     })

@@ -26,16 +26,16 @@ class NavBar extends Component {
   render() {
     let nav = this.props.user ?
       <li>
-        <Link to="" className='' onClick={this.props.handleLogout} >LOG OUT</Link>
+        <Link to="" className="blue-text text-darken-2" onClick={this.props.handleLogout} >LOG OUT</Link>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <span className=''>WELCOME, {this.props.user.name}</span>
+        <span>WELCOME, {this.props.user.name}</span>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       </li> :
       <li>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <Link to="/login" className=''>LOG IN</Link>
+        <Link to="/login">LOG IN</Link>
         &nbsp;&nbsp;|&nbsp;&nbsp;
-        <Link to="/signup" className=''>SIGN UP</Link>
+        <Link to="/signup">SIGN UP</Link>
       </li>;
 
     return (
@@ -43,13 +43,13 @@ class NavBar extends Component {
         <nav>
           <div className="nav-wrapper">
             <header className="brand-logo left"> Boosted Esports </header>
-            <div className="section">
+            <div className="blue-text text-darken-2">
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <Link to="/events" className='' >Events</Link>
-                <Link to="/games" className=""> Games</Link>
+                <Link to="/events" className="blue-text text-darken-2">Events</Link>
+                <Link to="/games" className="blue-text text-darken-2" > Games</Link>
                 <div>
                   <input type="text" value={this.state.search} onChange={this.changeSearch} />
-                  <button onClick={this.onClick}><Link to="/search"> Search</Link> </button>
+                  <button className="blue-text text-darken-2" onClick={this.onClick}><Link to="/search"> Search</Link> </button>
                 </div>
                 {nav}
               </ul>

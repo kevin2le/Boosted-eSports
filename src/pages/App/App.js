@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -44,6 +43,7 @@ class App extends Component {
 
   handleSearch = (results) => {
     this.setState({searchResults: results});
+    this.props.history.push('/games/search')
   }
 
   componentDidMount() {
@@ -60,7 +60,6 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
           <div>
             <NavBar
               user={this.state.user}
@@ -94,9 +93,8 @@ class App extends Component {
                 <GameData games={this.state.games}
                 />
               }/>
-              <Route exact path='games/search' render={(props) =>
-                <GameSearchPage search={this.state.searchResults}
-                />
+              <Route exact path='/games/search' render={(props) =>
+                <GameSearchPage search={this.state.searchResults} />
               }/>
               <Route exact path='/events' render={(props) =>
                 <EventList events={this.state.events} />
@@ -120,7 +118,6 @@ class App extends Component {
               } />
             </Switch>
           </div>
-        </Router>
     );
   }
 }

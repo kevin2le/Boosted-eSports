@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import tokenService from '../../utils/tokenService';
+import {
+  Button,
+  NavBar as MaterializeNavBar,
+  NavItem
+} from 'react-materialize';
 import './NavBar.css';
 
 class NavBar extends Component {
@@ -19,11 +24,12 @@ class NavBar extends Component {
   onClick = () => {
     fetch(`api/games/search?search=${this.state.search}`, { headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken() }) })
       .then(res => {
-        console.log(res);
-        return res.json()})
+        return res.json()
+      })
       .then(results =>{
-        console.log(results);
-       return this.props.handleSearch(results)})
+        console.log('search results =', results);
+        return this.props.handleSearch(results)
+      })
   }
 
 
@@ -54,7 +60,7 @@ class NavBar extends Component {
                 <li>
                   <div>
                     <input type="text" value={this.state.search} onChange={this.changeSearch} />
-                    <button className="blue-text text-darken-2" onClick={this.onClick}><Link to="/search"> Search</Link> </button>
+                    <button className="blue-text text-darken-2" onClick={this.onClick}>Search</button>
                   </div>
                 </li>
 

@@ -21,7 +21,7 @@ function index(req, res) {
 function search(req, res) {
     console.log(req.query);
     const options = {
-        url: rootURL + '/games/?search=' + req.query.search,
+        url: rootURL + '/games/?fields=name,cover,summary&search=' + req.query.search,
         method: "GET",
         headers: {
             'User-key': process.env.IGDB_KEY,
@@ -30,7 +30,7 @@ function search(req, res) {
     };
     request(options, function(err, response, body) {
         var gameSearch = JSON.parse(body);
-            res.send(gameSearch)
+        res.send(gameSearch)
     });
 }
 

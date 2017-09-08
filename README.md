@@ -4,10 +4,10 @@
     -Solid Snake "Metal Gear Solid"
 
 Boosted eSports is a site to look for upcoming esports events. The goal of this site is to help educate and show people what eSports culture is about. You know an event coming up that you want to share? Post it here for others to see.
+<img src="https://i.imgur.com/TUdf1E5.png">
 
 ## Technologies
 *Materialize
-<img src="https://i.imgur.com/TUdf1E5.png">
 *JQuery
 
 *HTML

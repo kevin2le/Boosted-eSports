@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
+import './SignupForm.css'
 
 class SignupForm extends Component {
     constructor(props) {
@@ -39,7 +40,7 @@ handleChange = (field, e) => {
     render() {
         return  (
             <div>
-                <header>Sign Up</header>
+                <h4 className="SignupForm">Sign Up</h4>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <div>

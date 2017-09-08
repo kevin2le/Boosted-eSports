@@ -7,13 +7,21 @@ Boosted eSports is a site to look for upcoming esports events. The goal of this 
 
 ## Technologies
 *Materialize
+<img src="https://i.imgur.com/TUdf1E5.png">
 *JQuery
+
 *HTML
+
 *CSS
+
 *Javascript
+
 *MongoDB
+
 *Mongoose
+
 *React JS
+
 *Internet Gaming Database API
 
 ## Project Planning and Completion
@@ -27,6 +35,9 @@ No errors to report atm
 
 #### Features:
 *Look up professional teams and players
+
 *Watch livestream Events
+
 *More Advanced Event creation that includes maps
+
 *Look at past events

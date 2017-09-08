@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import eventAPI from '../../utils/eventAPI';
+import './CreateEventPage.css'
 
 class CreateEventPage extends Component {
     constructor() {
@@ -34,7 +35,7 @@ class CreateEventPage extends Component {
     render() {
         return (
             <div>
-                <h2>Create an Event</h2>
+                <h2 className="CreateEventPage">Create an Event</h2>
                 <form>
                     <div>
                         <input type="text" placeholder="Event Title" value={this.state.title} onChange={(e) => this.handleChange('title', e)} />

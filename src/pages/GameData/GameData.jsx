@@ -7,7 +7,6 @@ const GameData = (props) => {
             <tr key={idx}>
                 <td>{game.name}</td>
                 <td>{game.summary}</td>
-                <td>{game.popularity}</td>
                 <td><img src={game.cover.url}></img></td>
             </tr>
         )

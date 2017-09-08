@@ -93,8 +93,14 @@ class App extends Component {
                 <GameData games={this.state.games}
                 />
               }/>
-              <Route exact path='/games/search' render={(props) =>
-                <GameSearchPage search={this.state.searchResults} />
+              <Route exact path='/games/search' render={(props) => {
+                  if (this.state.searchResults.length === 0) {
+                    this.props.history.push('/')
+                    return null
+                  } else {
+                    return <GameSearchPage search={this.state.searchResults} history={props.history} />
+                  }
+                }
               }/>
               <Route exact path='/events' render={(props) =>
                 <EventList events={this.state.events} />

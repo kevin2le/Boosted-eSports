@@ -108,15 +108,14 @@ class App extends Component {
                   />
               }/>
               <Route exact path='/events/:id' render={(props) => {
-                var event = this.state.events.find((eve) => {
-                  console.log(eve);
-                  return eve._id === props.match.params.id
+                var event = this.state.events.find((event)=> {
+                  return event._id === props.match.params.id
                 });
                 return(
-                <EventShowPage
-                      {...this.props}
-                      event = {event}
-                />)
+                  <EventShowPage
+                    {...props}
+                    event= {event}
+                  />)
               }
               } />
             </Switch>

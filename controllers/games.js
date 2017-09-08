@@ -3,8 +3,9 @@ var request = require('request');
 const rootURL = 'https://api-2445582011268.apicast.io/'
 
 function index(req, res) {
+    console.log('aosidjfoaisdjfoiasjdf')
     const options = {
-        url:"https://api-2445582011268.apicast.io/games/?fields=name,popularity&order=popularity:desc",
+        url:"https://api-2445582011268.apicast.io/games/?fields=name,cover,summary&order=popularity:desc",
         method: "GET",
         headers: {
             'User-key': process.env.IGDB_KEY,
@@ -12,6 +13,7 @@ function index(req, res) {
         }
     };
     request(options, function(err, response, body) {
+        console.log('body=' ,body);
         res.status(200).send(JSON.parse(body));
     })
 }

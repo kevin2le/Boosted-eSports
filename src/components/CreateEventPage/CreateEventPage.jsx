@@ -9,7 +9,7 @@ class CreateEventPage extends Component {
             title: '',
             location: '',
             date: '',
-            event: '',
+            type: '',
             game: []
         };
     }
@@ -46,7 +46,7 @@ class CreateEventPage extends Component {
                         <input type="text" placeholder="date" value={this.state.date} onChange={(e) => this.handleChange('date', e)} />
                     </div>
                     <div>
-                        <input type="text" placeholder="event type" value={this.state.event} onChange={(e) => this.handleChange('event', e)} />
+                        <input type="text" placeholder="event type" value={this.state.type} onChange={(e) => this.handleChange('type', e)} />
                     </div>
                     <div>
                         <input type="text" placeholder="games" value={this.state.games} onChange={(e) => this.handleChange('game', e)}/>

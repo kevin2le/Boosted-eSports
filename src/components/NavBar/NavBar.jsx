@@ -38,7 +38,7 @@ class NavBar extends Component {
     let nav = this.props.user ?
       <div>
         <NavItem> 
-          <Link to="" className="blue-text text-darken-2" onClick={this.props.handleLogout} >LOG OUT</Link>
+          <Link to="" className="" onClick={this.props.handleLogout} >LOG OUT</Link>
         </NavItem> 
         <NavItem>
           <span>WELCOME, {this.props.user.name}</span>  
@@ -54,12 +54,12 @@ class NavBar extends Component {
         </NavItem>
       </div>
     return (
-      <div>
-      <NavMaterialize brand='Boosted eSports' href="/" left>
-          <NavItem><Link to="/events" className="blue-text text-darken-2">Events</Link></NavItem>
-          <NavItem><Link to="/games" className="blue-text text-darken-2" > Games</Link></NavItem>
-          <NavItem><input type="text" value={this.state.search} onChange={this.changeSearch} /></NavItem>
-          <NavItem><Button onClick={this.onClick}>Search</Button></NavItem>
+      <div className="NavBar">
+      <NavMaterialize brand='Boosted eSports' href="/" left className="blue-grey">
+          <NavItem><input type="text" placeholder="Search Games" className="white black-text"value={this.state.search} onChange={this.changeSearch} /></NavItem>
+          <NavItem><Button waves='light'className="black" onClick={this.onClick}>Search</Button></NavItem>
+          <NavItem><Link to="/events" className="">Events</Link></NavItem>
+          <NavItem><Link to="/games" className="" > Games</Link></NavItem>
           {nav}
       </NavMaterialize>
       </div>

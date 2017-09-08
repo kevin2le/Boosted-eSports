@@ -95,8 +95,7 @@ class App extends Component {
               }/>
               <Route exact path='/games/search' render={(props) => {
                   if (this.state.searchResults.length === 0) {
-                    this.props.history.push('/')
-                    return null
+                    return <Redirect to="/" />
                   } else {
                     return <GameSearchPage search={this.state.searchResults} history={props.history} />
                   }
